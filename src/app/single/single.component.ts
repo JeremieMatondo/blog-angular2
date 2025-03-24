@@ -11,11 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SingleComponent {
   route:ActivatedRoute=inject(ActivatedRoute)
-article!:Article
+article!:Article | undefined
 articleId = -1;
 service:ArticleService = inject(ArticleService)
-ngOnInit(){
+ngOnInit() : void{
   this.articleId = Number(this.route.snapshot.paramMap.get('id'));
-  this.article=this.service.getOne(this.articleId)
+  this.service.one(this.articleId).then((response: Article) => {this.article = response});
 }
 }

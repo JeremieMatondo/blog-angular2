@@ -1,3 +1,7 @@
+
+import { Category } from "./category";
+
+
 export interface Article {
     id:number;
     title:string;
@@ -6,7 +10,7 @@ export interface Article {
     auteur:string;
     photo:string;
     created_at:string;
-    nb_comments:number;
-    categories:string[];
+    comments:number;
+    categories: Category[];
 
 }

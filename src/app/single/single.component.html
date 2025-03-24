@@ -1,23 +1,23 @@
 <article>
     <div class="row">
         <div class="col3">
-            <img src="{{article.photo}}" alt="" class="img-fluid">
+            <img src="{{article?.photo}}" alt="" class="img-fluid">
         </div>
         <div class="col7">
-            <h3>{{article.title}}</h3>
+            <h3>{{article?.title}}</h3>
 
             <p>
-                @for (categorie of article.categories;track $index){
+                @for (categorie of article?.categories;track $index){
                     <b>{{categorie}}</b> |
                 }
                 
             </p>
-            <p>{{article.slug}}</p>
-            <p><i>Publié par <b>{{article.auteur}}</b> {{article.created_at}}</i></p>
+            <p>{{article?.slug}}</p>
+            <p><i>Publié par <b>{{article?.auteur}}</b> {{article?.created_at}}</i></p>
             <div class="row">
                 <div class="col">
                     <p class="gray">
-                        {{article.nb_comments}} commentaires
+                        {{article?.comments}} commentaires
                     </p>
                 </div>
                 

@@ -1,23 +1,36 @@
 <article>
-<div class="row">
-    <div class="col3">
-        <img src="{{article.photo}}" alt="" class="img-fluid">
-    </div>
-    <div class="col7">
-        <h3>{{article.title}}</h3>
-        <p><b>{{article.categories[0]}}</b> | <b>{{article.categories[1]}}</b></p>
-        <p>{{article.slug}}</p>
-        <p><i>Publié par <b>{{article.auteur}}</b> {{article.created_at}}</i></p>
-        <div class="row">
-            <div class="col">
-                <p class="gray">
-                    {{article.nb_comments}} commentaires
+    <div class="row">
+        <div class="col3">
+            <img class="img-fluid" alt="image de l'article" src="{{ article.photo }}">
+        </div>
+        <div class="col7 text-red-200">
+            <h3>
+                {{ article.title }}
+            </h3>
+            <div>
+                <p class="categories">
+                    <b *ngFor="let category of article.categories">
+                        {{category.name}}
+                    </b>
+                </p>
+                <p class="post-content">
+                    {{ excerptText(article.content, 30) }}
+                </p>
+                <p>
+                    <i>Publié par <strong> {{ article.auteur }} </strong> {{article.created_at}} </i>
                 </p>
             </div>
-            <div class="col">
-                <p><a [routerLink]="['/articles',article.id]" class="btn">Voir plus</a></p>
+            <div class="row-action">
+                <div>
+                    <a href="" class="comment-count">
+                        {{ article.comments }}
+                        {{ article.comments > 0 ? 'Commentaires' : 'Commentaire' }}
+                    </a>
+                </div>
+                <div>
+                    <a href="" class="more" [routerLink]="['/articles', article.id]">Voir la suite</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </article>
